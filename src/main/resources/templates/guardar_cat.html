@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+
+	<form th:action="@{/saveCategoria}" th:object="${categoria}" method="post">
+	
+		<label>Nombre categoria: </label><input type="text" th:field="*{nombreCategoria}"/>
+		<span th:errors="*{nombreCategoria}" style="color: #FF0000"></span><br>
+		
+		<input type="submit" value="Guardar categoria">
+	</form>
+</body>
+</html>

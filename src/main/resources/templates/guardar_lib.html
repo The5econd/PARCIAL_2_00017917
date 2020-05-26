@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>Ingresar Libro</h1>
+		<form th:action="@{/saveLibro}" th:object="${libro}" method="post">
+		
+			<label>Titulo: </label><input type="text" th:field="*{titulo}"/>
+			<span class="text" th:errors="*{titulo}" style="color: #FF0000"></span><br>
+	
+			<label>Autor: </label><input type="text" th:field="*{autor}"/>
+			<span th:errors="*{autor}" style="color: #FF0000"></span><br>
+	
+			<label>ISBN: </label><input type="number" th:field="*{isbn}"/>
+			<span th:errors="*{isbn}" style="color: #FF0000"></span><br>
+			
+			<label>Categoria:</label>
+			<select th:field="*{categoria.codigoCategoria}">
+				<th:block th:each = "c, row: ${categorias}">
+				<option th:value="${c.codigoCategoria}" th:text = "${c.nombreCategoria}">
+			</select>
+
+			<p>Estado: </p>
+			<label>Activo/inactivo: </label><input type="checkbox" th:field="*{estado}" th:value="${true}"/><br>
+			
+			<input type="submit" value="Ingresar libro"/>
+		</form>
+</html>
